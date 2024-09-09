@@ -9,7 +9,7 @@ pipeline {
     stages {
         stage ("Clone project") {
           steps {
-            git branch: 'dev', url: 'https://github.com/namkattor123/QueryExporterApp.git'
+            git branch: 'dev', url: 'https://github.com/hadam1011/Query-exporter-app.git'
           }
         }
 
