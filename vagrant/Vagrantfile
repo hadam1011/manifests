@@ -1,0 +1,41 @@
+IMAGE_NAME = "bento/ubuntu-22.04"
+N = 2 # Số lượng worker trong cluster
+
+Vagrant.configure("2") do |config|
+  config.vm.box_check_update = false
+
+  # Worker nodes
+  (1..N).each_with_index do |i|
+    config.vm.define "worker-#{i}" do |host|
+      host.vm.provider "virtualbox" do |vb|       
+        vb.cpus = 3                                 
+        vb.memory = "4096"
+      end
+      host.vm.box = IMAGE_NAME
+      host.vm.hostname = "worker-#{i}"
+      host.vm.network "private_network", ip: "10.208.182.13#{i}"
+    end
+  end
+
+  # Master node
+  config.vm.define "master" do |master|
+    master.vm.provider "virtualbox" do |vb|       
+      vb.cpus = 2                                 
+      vb.memory = "4096"                          
+    end
+    master.vm.box = IMAGE_NAME
+    master.vm.hostname = "master"
+    master.vm.network "private_network", ip: "10.208.182.130"
+  end
+
+  # Ansible host
+  config.vm.define "ansible" do |ansible|
+    ansible.vm.provider "virtualbox" do |vb|       
+      vb.cpus = 2                                 
+      vb.memory = "1024"                          
+    end
+    ansible.vm.box = IMAGE_NAME
+    ansible.vm.hostname = "ansible-host"
+    ansible.vm.network "private_network", ip: "10.208.182.129"
+  end
+end

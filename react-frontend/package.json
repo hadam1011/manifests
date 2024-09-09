@@ -1,0 +1,58 @@
+{
+  "name": "react-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@babel/plugin-transform-private-property-in-object": "^7.23.4",
+    "@opentelemetry/api": "^1.7.0",
+    "@opentelemetry/auto-instrumentations-web": "^0.36.0",
+    "@opentelemetry/context-zone": "^1.21.0",
+    "@opentelemetry/exporter-trace-otlp-proto": "^0.48.0",
+    "@opentelemetry/resources": "^1.21.0",
+    "@opentelemetry/sdk-trace-web": "^1.21.0",
+    "@opentelemetry/semantic-conventions": "^1.21.0",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.5.0",
+    "@testing-library/user-event": "^7.2.1",
+    "antd": "^5.13.2",
+    "axios": "^1.6.4",
+    "bootstrap": "^5.1.3",
+    "js-yaml": "^4.1.0",
+    "jwt-decode": "^4.0.0",
+    "moment": "^2.30.1",
+    "react": "^16.13.1",
+    "react-apexcharts": "^1.4.1",
+    "react-bootstrap": "^2.1.2",
+    "react-display-window": "^2.1.2",
+    "react-dom": "^16.13.1",
+    "react-icons": "^5.0.0",
+    "react-router-dom": "^5.3.4",
+    "react-scripts": "^5.0.1",
+    "react-select": "^5.8.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+  }
+}

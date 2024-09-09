@@ -1,0 +1,12 @@
+{
+  "monitor": {
+    "menuEnabled": true
+  },
+  "search": {
+    "maxLookback": {
+      "label": "Last 1 Hours",
+      "value": "1h"
+    },
+    "maxLimit": 1500
+  }
+}
