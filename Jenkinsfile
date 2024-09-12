@@ -42,9 +42,8 @@ pipeline {
                 bat """
                     git config user.email "hadam8910@gmail.com"
                     git config user.name "hadam1011"
-                    BUILD_NUMBER=${BUILD_NUMBER}
-                    sed -i "s/imageVersion/${BUILD_NUMBER}/g" Query-exporter-app/manifests/backend-deployment.yml
-                    sed -i "s/imageVersion/${BUILD_NUMBER}/g" Query-exporter-app/manifests/frontend-deployment.yml
+                    (Get-Content "Query-exporter-app/manifests/backend-deployment.yml") -replace 'imageVersion', $env:${BUILD_NUMBER} | Set-Content "Query-exporter-app/manifests/backend-deployment.yml"
+                    (Get-Content "Query-exporter-app/manifests/frontend-deployment.yml") -replace 'imageVersion', $env:${BUILD_NUMBER} | Set-Content "Query-exporter-app/manifests/frontend-deployment.yml"
                     git add .
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/hadam1011/Query-exporter-app HEAD:main
