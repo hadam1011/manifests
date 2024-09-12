@@ -19,10 +19,10 @@ pipeline {
         stage ('Build images') {
             steps {
                 dir ('./react-frontend') {
-                    bat "docker build -t ${DOCKERHUB_REPO}:frontend ."
+                    bat "docker build -t ${DOCKERHUB_REPO}:frontend-${BUILD_NUMBER} ."
                 }
                 dir ('./springboot-backend') {
-                    bat "docker build -t ${DOCKERHUB_REPO}:backend ."
+                    bat "docker build -t ${DOCKERHUB_REPO}:backend-${BUILD_NUMBER} ."
                 }
             }
         }
