@@ -3,6 +3,8 @@ pipeline {
     
     environment {
         DOCKERHUB_CREDENTIALS = credentials('dockerhub_login')
+        GITHUB_CREDENTIALS = credentials('github_login')
+        GITHUB_TOKEN = credentials('github_token')
         DOCKERHUB_REPO = 'mad1011/query-exporter-app'
     }
 
@@ -29,16 +31,25 @@ pipeline {
             steps {
                 bat """
                     docker login -u ${DOCKERHUB_CREDENTIALS_USR} -p ${DOCKERHUB_CREDENTIALS_PSW}
-                    docker push ${DOCKERHUB_REPO}:frontend
-                    docker push ${DOCKERHUB_REPO}:backend
+                    docker push ${DOCKERHUB_REPO}:frontend-${BUILD_NUMBER}
+                    docker push ${DOCKERHUB_REPO}:backend-${BUILD_NUMBER}
                 """
             }
         }
 
-        // stage ('Deploy to K8s') {
-        //     scripts {
-        //         kubernetesDeploy (configs: 'deploymentservice.yaml', kubeconfigId: 'k8s_kubeconfig')
-        //     }
-        // }
+        stage ('Update deployment files') {
+            steps {
+                bat """
+                    git config user.email "hadam8910@gmail.com"
+                    git config user.name "hadam1011"
+                    BUILD_NUMBER=${BUILD_NUMBER}
+                    sed -i "s/imageVersion/${BUILD_NUMBER}/g" Query-exporter-app/manifests/backend-deployment.yml
+                    sed -i "s/imageVersion/${BUILD_NUMBER}/g" Query-exporter-app/manifests/frontend-deployment.yml
+                    git add .
+                    git commit -m "Update deployment image to version ${BUILD_NUMBER}"
+                    git push https://${GITHUB_TOKEN}@github.com/hadam1011/Query-exporter-app HEAD:main
+                """
+            }
+        }
     }
 }

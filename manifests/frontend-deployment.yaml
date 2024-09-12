@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: mad1011/query-exporter-app:frontend
+          image: mad1011/query-exporter-app:frontend-imageVersion
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
