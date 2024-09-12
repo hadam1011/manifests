@@ -4,6 +4,7 @@ import { useAuth } from '../../AuthContext';
 import { LockOutlined, UserOutlined } from '@ant-design/icons';
 import { Button, Divider, Form, Input, Typography, notification } from 'antd';
 import * as AuthService from '../../services/AuthService';
+import ImageBackground from '../../images/login-background.jpg'
 
 const LoginPage = () => {
   const { login } = useAuth();
@@ -43,7 +44,7 @@ const LoginPage = () => {
           height: '100%',
       }}>
           <img
-            src='https://last9.ghost.io/content/images/2022/12/Prometheus-exporters-copy--1-.jpg'
+            src={ImageBackground}
             style={{width:'100%', height: '100%'}}
           />
       </div>
