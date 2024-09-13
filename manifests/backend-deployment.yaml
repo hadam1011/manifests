@@ -15,6 +15,7 @@ spec:
       containers:
         - name: backend
           image: mad1011/query-exporter-app:backend-imageVersion
+          ports:
             - containerPort: 8081
           env:
             - name: SPRING_DATASOURCE_URL
