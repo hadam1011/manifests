@@ -42,8 +42,8 @@ pipeline {
                 bat """
                     git config user.email "hadam8910@gmail.com"
                     git config user.name "hadam1011"
-                    (Get-Content manifests/backend-deployment.yaml) -replace 'imageVersion', ${BUILD_NUMBER} | Out-File -encoding ASCII manifests/backend-deployment.yaml
-                    (Get-Content manifests/frontend-deployment.yaml) -replace 'imageVersion', ${BUILD_NUMBER} | Out-File -encoding ASCII manifests/frontend-deployment.yaml
+                    powershell -Command "(Get-Content manifests/backend-deployment.yaml) -replace 'imageVersion', ${BUILD_NUMBER} | Out-File -encoding ASCII manifests/backend-deployment.yaml"
+                    powershell -Command "(Get-Content manifests/frontend-deployment.yaml) -replace 'imageVersion', ${BUILD_NUMBER} | Out-File -encoding ASCII manifests/frontend-deployment.yaml"
                     git add .
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/hadam1011/Query-exporter-app HEAD:main
