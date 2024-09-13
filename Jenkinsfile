@@ -47,6 +47,9 @@ pipeline {
                     git add .
                     git commit -m "Update deployment image to version ${BUILD_NUMBER}"
                     git push https://${GITHUB_TOKEN}@github.com/hadam1011/Query-exporter-app HEAD:main
+
+                    powershell -Command "(Get-Content manifests/backend-deployment.yaml) -replace '${BUILD_NUMBER}', 'imageVersion' | Out-File -encoding ASCII manifests/backend-deployment.yaml"
+                    powershell -Command "(Get-Content manifests/frontend-deployment.yaml) -replace '${BUILD_NUMBER}', 'imageVersion' | Out-File -encoding ASCII manifests/frontend-deployment.yaml"
                 """
             }
         }
