@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: mad1011/query-exporter-app:backend-2
+          image: mad1011/query-exporter-app:backend-4
           ports:
             - containerPort: 8081
           env:
