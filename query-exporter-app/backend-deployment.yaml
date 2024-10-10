@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: mad1011/query-exporter-app:backend-3
+          image: namln0612/springboot-backend-app:4.0.1
           ports:
             - containerPort: 8081
           env:
