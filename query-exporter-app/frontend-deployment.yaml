@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: mad1011/query-exporter-app:frontend-33
+          image: namln0612/react-frontend-app:4.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
