@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: namln0612/react-frontend-app:4.0.1
+          image: mad1011/query-exporter-app:frontend-36
           imagePullPolicy: Always
           ports:
             - containerPort: 3000
@@ -37,5 +37,3 @@ spec:
     - protocol: TCP
       port: 3000
       targetPort: 3000
-      nodePort: 30001
-  type: NodePort
